@@ -2,7 +2,7 @@
 # define MAX 50
 void main()
 {
-    int n,i,j,k,a[MAX],target,s,flag=0;
+    int n,i,j,k,a[MAX],t,s,flag=0,temp=0;
     printf("Enter the limit : ");
     scanf("%d",&n);
     printf("Enter the numbers : ");
@@ -11,28 +11,31 @@ void main()
         scanf("%d",&a[i]);
     }
     printf("Enter the target : ");
-    scanf("%d",&target);
-    s=a[0];j=0;
+    scanf("%d",&t);
+    temp=a[0];
+    j=0;
     for(i=1;i<n;i++)
     {
-        for(k=i;k<n;k++)
+        k=i;
+        while(k<n)
         {
-            s=s+a[i];
-            if(s==target)
+            s=temp+a[k];
+            if(s==t)
             {
                 flag=1;break;
             }
+            k++;
         }
         if(flag==1)
             break;
         else
         {
-        s=a[i];
+        temp=a[i];
         j=i;
         }
     }
     if(flag==0)
     printf("Numbers sum not match with target ");
     else
-    printf("Index : %d,%d",j,i);
+    printf("Index : %d,%d",j,k);
 }
